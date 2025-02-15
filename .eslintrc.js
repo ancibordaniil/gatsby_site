@@ -1,4 +1,3 @@
-// eslint.config.js
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -13,7 +12,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   env: {
-    node: true, 
+    node: true,
     browser: true,
   },
   rules: {

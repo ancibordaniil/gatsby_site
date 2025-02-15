@@ -1,27 +1,26 @@
-// src/i18n.ts
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
-// Импортируем JSON файлы с переводами
 import enTranslation from '../locales/en/common.json';
 import ruTranslation from '../locales/ru/common.json';
 
-i18n
-  .use(initReactI18next)
-  .init({
+i18n.use(initReactI18next).init({
     resources: {
       en: {
-        translation: enTranslation, // Перевод для английского языка
+        common: enTranslation, // подключаем переводы для английского
       },
       ru: {
-        translation: ruTranslation, // Перевод для русского языка
+        common: ruTranslation, // подключаем переводы для русского
       },
     },
-    lng: 'en', // Язык по умолчанию
-    fallbackLng: 'en', // Язык по умолчанию, если переводы не найдены
+    lng: localStorage.getItem('i18nextLng') || 'en', // получаем текущий язык из локального хранилища
+    fallbackLng: 'en', // язык по умолчанию
     interpolation: {
       escapeValue: false, // Для React
     },
+    react: {
+      useSuspense: false, // Скрывает ошибку React Suspense
+    },
   });
+  
 
 export default i18n;

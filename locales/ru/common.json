@@ -1,4 +1,4 @@
 {
-  "welcome_message": "Добро!",
-  "scss_works": "SCSS работает? Отлично! ✅"
+  "common:welcome": "Добро!",
+  "common:scss": "SCSS работает? Отлично! ✅"
 }

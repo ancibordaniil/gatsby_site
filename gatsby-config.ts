@@ -17,11 +17,13 @@ const config: GatsbyConfig = {
         languages: ["en", "ru"],
         defaultLanguage: "en",
         siteUrl: "http://localhost:8000/",
+        trailingSlash: "always", // 🔹 Важно!
         i18nextOptions: {
-          fallbackLng: "en",
           interpolation: {
             escapeValue: false,
           },
+          nsSeparator: false, // 🔹 Важно, если используешь вложенные ключи в JSON
+          keySeparator: false, // 🔹 Важно, если ключи содержат точки
         },
       },
     },
