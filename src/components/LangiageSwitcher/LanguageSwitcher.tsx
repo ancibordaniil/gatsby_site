@@ -1,23 +1,35 @@
-// src/components/LanguageSwitcher/LanguageSwitcher.tsx
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
+import { useI18next, Link } from 'gatsby-plugin-react-i18next';
+import * as styles from './LanguageSwitcher.module.scss';
 
 const LanguageSwitcher: React.FC = () => {
-    const { i18n } = useTranslation();
-  
-    const handleLanguageChange = (lang: string) => {
-      i18n.changeLanguage(lang).then(() => {
-        localStorage.setItem('i18nextLng', lang); // Сохраняем выбранный язык в локальное хранилище
-        console.log("Текущий язык:", lang);
-      });
-    };
+    const { originalPath, language } = useI18next(); // Получаем текущий язык
 
-  return (
-    <div>
-      <button onClick={() => handleLanguageChange('en')}>English</button>
-      <button onClick={() => handleLanguageChange('ru')}>Русский</button>
-    </div>
-  );
+    const languages = [
+        { code: 'en', label: 'EN' },
+        { code: 'ru', label: 'RU' },
+    ];
+
+    return (
+        <div className={styles.languages}>
+            {languages.map(({ code, label }, index) => (
+                <React.Fragment key={code}>
+                    <Link
+                        to={originalPath}
+                        language={code}
+                        className={code === language ? styles.active : ''}
+                        replace={true}
+                        {...({} as any)} // 👈 Отключаем строгую проверку типов
+                        >
+                        {label}
+                    </Link>
+                    {index < languages.length - 1 && (
+                        <span className={styles.separator}>|</span>
+                    )}
+                </React.Fragment>
+            ))}
+        </div>
+    );
 };
 
 export default LanguageSwitcher;

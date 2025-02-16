@@ -16,6 +16,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    "no-explicit-any": "off", // Разрешает использование any
     'import/no-unresolved': 'error',
     'react/react-in-jsx-scope': 'off',
     'import/order': [
