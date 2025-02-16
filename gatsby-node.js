@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require("fs-extra")
 
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -12,10 +11,3 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     }
   });
 };
-
-exports.onPostBuild = () => {
-    console.log("Copying locales")
-    fs.copySync(
-      path.join(__dirname, "/src/locales"),
-    )
-  }
