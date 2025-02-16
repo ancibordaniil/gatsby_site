@@ -3,7 +3,7 @@ import { useI18next, Link } from 'gatsby-plugin-react-i18next';
 import * as styles from './LanguageSwitcher.module.scss';
 
 const LanguageSwitcher: React.FC = () => {
-    const { originalPath, language } = useI18next(); // Получаем текущий язык
+    const { originalPath, language } = useI18next();
 
     const languages = [
         { code: 'en', label: 'EN' },
@@ -19,7 +19,7 @@ const LanguageSwitcher: React.FC = () => {
                         language={code}
                         className={code === language ? styles.active : ''}
                         replace={true}
-                        {...({} as any)} // 👈 Отключаем строгую проверку типов
+                        {...({} as any)} 
                         >
                         {label}
                     </Link>

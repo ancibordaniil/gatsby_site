@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import LanguageSwitcher from '../components/LangiageSwitcher/LanguageSwitcher';
+import LanguageSwitcher from '../components/LanguageSwitcher/LanguageSwitcher';
 
 type LayoutProps = {
   children: React.ReactNode;
