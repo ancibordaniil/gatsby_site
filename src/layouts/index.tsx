@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <LanguageSwitcher /> {/* Добавляем переключатель языка */}
+      <LanguageSwitcher />
       <main>{children}</main>
     </>
   );

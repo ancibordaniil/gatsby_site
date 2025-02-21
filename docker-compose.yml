@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - ./locales:/app/locales
+      - /app/node_modules # Предотвращает перекрытие node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+    restart: unless-stopped
+    working_dir: /app

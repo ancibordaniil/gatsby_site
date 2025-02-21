@@ -1,27 +1,28 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  siteMetadata: {
+    siteUrl: `http://localhost:8000`, // Добавлено
+  },
   plugins: [
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/locales`, // Путь к файлам переводов
-        name: "locale", // Имя источника
+        path: `${__dirname}/locales`,
+        name: "locales",
       },
     },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-react-i18next",
       options: {
-        localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
-        languages: [`en`, 'ru'],
-        // if you are using Helmet, you must include siteUrl, and make sure you add http:https
-        // siteUrl: `https://example.com`,
-        trailingSlash: 'always',
+        localeJsonSourceName: `locales`,
+        languages: [`en`, `ru`],
+        defaultLanguage: `en`, // Добавлено
+        siteUrl: `http://localhost:8000`, // Добавлено
+        trailingSlash: "always",
         i18nextOptions: {
-          interpolation: {
-            escapeValue: false,
-          },
+          interpolation: { escapeValue: false },
           keySeparator: false,
           nsSeparator: false,
         },
@@ -29,5 +30,4 @@ const config: GatsbyConfig = {
     },
   ],
 };
-
 export default config;

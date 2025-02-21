@@ -17,8 +17,8 @@ const LanguageSwitcher: React.FC = () => {
                     <Link
                         to={originalPath}
                         language={code}
-                        className={code === language ? styles.active : ''}
                         replace={true}
+                        className={code === language ? styles.active : ''}
                         {...({} as any)} 
                         >
                         {label}
